@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Création du socket UDP
+    // Création of socket UDP
     int sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if (sockfd < 0) {
         perror("Erreur lors de la création du socket");
@@ -23,30 +23,31 @@ int main(int argc, char *argv[]) {
     struct addrinfo hints;
     struct addrinfo *res;
 
-    // Configuration des attributs de la structure hints
+    // Configuration of attributes of hints structure
     memset(&hints, 0, sizeof(struct addrinfo));
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_DGRAM;
     hints.ai_protocol = IPPROTO_UDP;
 
-    // Résolution de l'adresse du serveur
+    // Résolution of server's address
     e = getaddrinfo(argv[1], argv[3], &hints, &res);
     if (e != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(e));
         exit(EXIT_FAILURE);
     }
 
-    // Configuration de l'adresse du serveur
+    // Configuration of server's address
     struct sockaddr_in server_addr;
     memcpy(&server_addr, res->ai_addr, res->ai_addrlen);
     freeaddrinfo(res);
 
-    // Préparation du message à envoyer
+    // Préparation of message to send 
     // char bufT[300] = "Message depuis le client UDP !";
     char bufT[300] = "Message depuis le client UDP !";
 
     int msg_len = strlen(bufT);
-    // preparation de la trame RRQ/WRQ 
+	
+    // preparation of trame RRQ/WRQ 
     char bufTsended[309];
 
 	bufTsended[0] = 0x00;  
@@ -65,7 +66,7 @@ int main(int argc, char *argv[]) {
 	int bufTsended_len = 4 + msg_len + mode_len;
 
     
-    // Envoi du message via sendto()
+    // sending message via sendto()
     if (sendto(sockfd, bufTsended, bufTsended_len, 0, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
         perror("Erreur lors de l'envoi du message");
         exit(EXIT_FAILURE);
@@ -73,7 +74,7 @@ int main(int argc, char *argv[]) {
 // /home/ensea/Documents/TP2/serveur/zeros256 modèle (binaire) STL 3D | 256 bytes (256 bytes)
     printf("Message envoyé au serveur %s sur le port %s.\n", argv[1], argv[3]);
 
-    // Fermeture propre du socket
+    // properly closing the socket
     close(sockfd);
 
     return 0;
