@@ -55,7 +55,7 @@ Développez un client capable de :
    ```bash
    s puttftp host file
    ```
-
+![](captures/img1.jpg)
 #### **2. Fonctionnalités implémentées**
 Implémentez les fonctionnalités suivantes dans cet ordre :
 1. **Arguments passés en ligne de commande** :
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    img1
+![](captures/img1.jpg)
 2. **Appel à getaddrinfo pour obtenir l’adresse du serveur ;** pour la connexion au serveur.
    // Configuration des attributs de la structure hints
     memset(&hints, 0, sizeof(struct addrinfo));
