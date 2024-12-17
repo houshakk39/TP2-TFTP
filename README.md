@@ -66,6 +66,7 @@ int main(int argc, char *argv[]) {
     }
 
 ![](captures/img1.jpg)
+
 2. **Appel à getaddrinfo pour obtenir l’adresse du serveur ;** pour la connexion au serveur.
    // Configuration des attributs de la structure hints
     memset(&hints, 0, sizeof(struct addrinfo));
@@ -80,7 +81,8 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    img2
+![](captures/img2.jpg)
+
 3. **Réservation d’un socket de connexion vers le serveur** :
     // Creation of UDP socket
     int sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
@@ -95,8 +97,7 @@ int main(int argc, char *argv[]) {
     }
 	printf("Message envoyé au serveur %s sur le port %s.\n", argv[1], argv[3]);
 close(sockfd);
-img3
- 
+![](captures/img3.jpg) 
 4. **requête de lecture (RRQ)** :
    - Envoi d’une **requête de lecture (RRQ)** ou **d’écriture (WRQ)** correctement formée.
     // Préparation of message to send 
@@ -123,9 +124,10 @@ img3
 
 	int bufTsended_len = 4 + msg_len + mode_len;
 
-    img4
+![](captures/img4.jpg) 
+trame proprement constituée:
+![](captures/img5.jpg) 
    - Réception et gestion des **paquets de données (DAT)** et des **accusés de réception (ACK)**.
-   - Détection de paquets hors séquence.
    - Gestion des retransmissions en cas d’erreurs.
 
 ---
