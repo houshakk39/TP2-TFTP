@@ -23,7 +23,7 @@ Le protocole est fréquemment utilisé dans :
 ---
 
 ### **Environnement de test**
-Pour tester votre client TFTP, choisissez l'une des deux options suivantes :
+Pour tester le client TFTP, on choisit l'une des deux options suivantes :
 1. **Serveur local** : Installez un serveur TFTP avec :
    ```bash
    sudo apt install atftp
@@ -127,8 +127,6 @@ close(sockfd);
 ![](captures/img4.jpg) 
 trame proprement constituée:
 ![](captures/img5.jpg) 
-   - Réception et gestion des **paquets de données (DAT)** et des **accusés de réception (ACK)**.
-   - Gestion des retransmissions en cas d’erreurs.
 
 ---
 
@@ -190,7 +188,6 @@ gcc -o tftp_client tftp_client.c
 ├── TFTP3_4.c        # Code source du client TFTP
 ├── TFTP4.c        # Code source du client TFTP
 ├── README.md            # Ce fichier
-├── tftp_client.c        # Code source du client TFTP******
 └── captures/            # Captures Wireshark
 
 ---
