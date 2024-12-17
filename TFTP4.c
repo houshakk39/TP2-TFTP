@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Création of socket UDP
+    // Creation of socket UDP
     int sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if (sockfd < 0) {
         perror("Erreur lors de la création du socket");
@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
         perror("Erreur lors de l'envoi du message");
         exit(EXIT_FAILURE);
     }
-// /home/ensea/Documents/TP2/serveur/zeros256 modèle (binaire) STL 3D | 256 bytes (256 bytes)
+// /home/ensea/Documents/TP2/serveur/zeros256 | modèle (binaire) STL 3D | 256 bytes (256 bytes) 
     printf("Message envoyé au serveur %s sur le port %s.\n", argv[1], argv[3]);
 
     // properly closing the socket
